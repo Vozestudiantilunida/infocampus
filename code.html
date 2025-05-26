@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infocampus</title>
+ <link rel="icon" href="./logo.png" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=folder" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #eaf6ea; /* Light mint green */
+    color: #1f3d1f; /* Dark green */
+    line-height: 1.6;
+  }
+
+  a {
+    color: #3c8033; /* Medium green */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover, a:focus {
+    color: #76b767; /* Soft green */
+    outline: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  header {
+    background: #1f3d1f; /* Dark green */
+    color: #d9f0d9; /* Pale green */
+    padding: 1.25rem 0;
+    font-weight: 700;
+  }
+  header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo for header title */
+  .logo {
+    font-size: 1.85rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Navigation */
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+  nav li {
+    font-weight: 600;
+  }
+  nav li a {
+    font-size: 1.1rem;
+    display: inline-block;
+    padding: 0.3rem 0;
+    transition: color 0.3s ease;
+  }
+
+  /* Mobile menu button */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+  }
+  .menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #d9f0d9;
+    border-radius: 2px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #76b767, #1f3d1f);
+    color: #d9f0d9;
+    padding: 6rem 1.5rem 4rem;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+  }
+  .hero h1 {
+    font-size: 3.75rem;
+    margin-bottom: 1rem;
+    font-weight: 900;
+    line-height: 1.1;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  .hero p {
+    font-size: 1.35rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  }
+
+  /* Features section */
+  .features {
+    background: #c7e7bf;
+    padding: 4rem 1.5rem 2rem;
+  }
+  .features .container {
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+  }
+  .features h2 {
+    color: #1f3d1f;
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2.75rem;
+  }
+  .feature {
+    background: #e3f0d7;
+    border-radius: 18px;
+    padding: 2.25rem;
+    box-shadow: 0 6px 22px rgba(60, 128, 51, 0.15);
+    text-align: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+    cursor: default;
+  }
+  .feature:hover, .feature:focus-within {
+    transform: translateY(-14px) scale(1.06);
+    box-shadow: 0 22px 45px rgba(60, 128, 51, 0.3);
+    outline: none;
+  }
+  .feature h3 {
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #244e1c;
+    letter-spacing: 0.045em;
+  }
+  .feature p {
+    font-weight: 400;
+    color: #3c8033;
+    font-size: 1.1rem;
+  }
+
+  /* Section images style */
+  .section-image {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section-image img {
+    border-radius: 14px;
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 8px 20px rgba(60, 128, 51, 0.2);
+    transition: transform 0.35s ease;
+    cursor: pointer;
+  }
+  .section-image img:hover, .section-image img:focus {
+    transform: scale(1.07);
+  }
+
+  /* Sections: Acerca de Nosotros and Mision */
+  .section-about, .section-mision {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem 2rem;
+    background: #c7e7bf;
+    border-radius: 20px;
+    box-shadow: 0 9px 28px rgba(60, 128, 51, 0.1);
+    text-align: center;
+  }
+  .section-about h2, .section-mision h2 {
+    color: #1f3d1f;
+    font-weight: 900;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  }
+  .section-about p, .section-mision p {
+    font-weight: 400;
+    color: #3c8033;
+    line-height: 1.7;
+    font-size: 1.2rem;
+    max-width: 720px;
+    margin: 0 auto 1.75rem auto;
+  }
+
+  /* Documentacion section */
+  .documentacion {
+    background: #d9f0d9;
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 9px 28px rgba(60, 128, 51, 0.12);
+  }
+  .material-symbols-outlined {
+    font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48;
+    font-size: 48px;
+    color: #517a47;
+    flex-shrink: 0;
+  }
+  .documentacion a {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #244e1c;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .documentacion a:hover, .documentacion a:focus {
+    color: #76b767;
+    outline: none;
+  }
+
+  /* Footer */
+  footer {
+    background: #1f3d1f;
+    color: #d9f0d9;
+    text-align: center;
+    padding: 2.75rem 1.5rem;
+    font-size: 1rem;
+    user-select: none;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+  footer a {
+    color: #76b767;
+    text-decoration: none;
+    border-bottom: 1px dotted transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+  footer a:hover, footer a:focus {
+    color: #d9f0d9;
+    border-color: #d9f0d9;
+    outline: none;
+  }
+
+  /* Responsive navigation */
+  @media (max-width: 768px) {
+    nav ul {
+      position: fixed;
+      top: 72px;
+      right: -100%;
+      background: #1f3d1f;
+      height: calc(100% - 72px);
+      width: 60%;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 2.25rem;
+      gap: 1.75rem;
+      transition: right 0.3s ease;
+      box-shadow: -4px 0 12px rgba(34, 81, 34, 0.3);
+      z-index: 999;
+      border-radius: 12px 0 0 12px;
+    }
+    nav ul.active {
+      right: 0;
+    }
+    nav li a {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero h1 {
+      font-size: 2.75rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+    .documentacion {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .material-symbols-outlined {
+      margin-bottom: 0.75rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="logo" tabindex="0" aria-label="Logo Voz Estudiantil">
+      <img src="./logo.png" alt="Logo Voz Estudiantil" />
+        Infocampus
+    </div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#about">Acerca de Nosotros</a></li>
+        <li><a href="#mision">Misión</a></li>
+        <li><a href="#footer">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle" aria-label="Alternar menú de navegación" tabindex="0" role="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero" role="banner" aria-label="Sección Principal">
+  <h1>Infocampus</h1>
+  <p>La plataforma que impulsa y da voz a la comunidad estudiantil con innovación y compromiso.</p>
+</section>
+
+<section class="features" id="features" aria-label="Sección de Características">
+  <div class="container">
+    <h2>Propuestas</h2>
+    <div class="features-grid">
+      <article class="feature" tabindex="0">
+        <h3>Transparencia</h3>
+        <p>Todo proceso decisorio debe quedar expuesto a la luz pública.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Fomento de actividad deportiva estudiantil y actividades extracadémicas</h3>
+        <p>Fomentamos la participación activa en deportes y actividades fuera del aula.</p>
+      </article>
+      <article class="feature" tabindex="0">
+        <h3>Digitalización plena</h3>
+        <p>Todo al alcance de un clic.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="intro-image" class="section-image" aria-label="Imagen introducción">
+  <img src="Propuestas.png" alt="Grupo de estudiantes colaborando" />
+</section>
+
+<section id="about" class="section-about" aria-label="Acerca de Nosotros">
+  <h2>Acerca de Nosotros</h2>
+  <p>
+    omos un grupo heterogéneo de estudiantes de la Facultad de Derecho y Ciencias Jurídicas que, al margen de siglas y afinidades externas, compartimos un mismo propósito: dotar a la comunidad académica de un foco de información veraz, comprensible y permanente. Provenimos de distintos grados, másteres y cursos; esa pluralidad nos permite observar la vida universitaria desde perspectivas complementarias y convertirla en criterio común. Nos une la convicción de que la transparencia y el acceso al dato jurídico no son privilegios, sino condiciones básicas para ejercer la ciudadanía universitaria de forma consciente y participativa. Bajo esa premisa, dedicamos nuestro tiempo—voluntario y autónomo—a mantener Infocampus Derecho como espacio público, abierto y siempre mejorable.
+  </p>
+</section>
+
+<section id="mision" class="section-mision" aria-label="Misión">
+  <h2>Misión</h2>
+  <div class="section-image">
+    <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=900&q=70" alt="Mensaje de misión y liderazgo estudiantil" />
+  </div>
+  <p>
+    Nuestra misión es empoderar a los estudiantes para que tengan una voz activa y significativa dentro de sus instituciones,
+    promoviendo la participación, el liderazgo y el desarrollo personal a través de tecnologías modernas y apoyo comunitario.
+  </p>
+</section>
+
+<section id="documentacion" class="documentacion" aria-label="Sección Documentación">
+  <span class="material-symbols-outlined" aria-hidden="true">folder</span>
+  <a href="https://drive.google.com/drive/folders/1--nCw6kULTwsv7YDtX6OKZIoDbPc4uT0" target="_blank" rel="noopener noreferrer" tabindex="0">Accede a nuestra Documentación aquí</a>
+</section>
+
+<footer id="footer" role="contentinfo">
+  &copy; 2024 Voz Estudiantil. Todos los derechos reservados. | contacto@vozestudiantil.com
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navLinks.classList.toggle('active');
+    }
+  });
+</script>
+</body>
+</html>
